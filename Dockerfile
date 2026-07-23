@@ -7,11 +7,7 @@ COPY . .
 RUN gradle build --no-daemon
 
 FROM eclipse-temurin:21-jdk-alpine
-
 WORKDIR /app
-
-COPY --from=build /app/build/libs/*.jar /app/usuario.jar
-
+COPY --from=build /app/build/libs/usuario-0.0.1-SNAPSHOT.jar /app/usuario.jar
 EXPOSE 8083
-
 CMD ["java","-jar","/app/usuario.jar"]
